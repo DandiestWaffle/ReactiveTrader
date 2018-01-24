@@ -15,7 +15,7 @@ using PropertyChanged;
 
 namespace Adaptive.ReactiveTrader.Client.UI.SpotTiles
 {
-    [ImplementPropertyChanged]
+    [AddINotifyPropertyChangedInterface]
     public class SpotTilePricingViewModel : ViewModelBase, ISpotTilePricingViewModel
     {
         public IOneWayPriceViewModel Bid { get; private set; }
