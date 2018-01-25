@@ -21,20 +21,20 @@ namespace Neutronium.ReactiveTrader.Client.Application.Navigation
         public event EventHandler<RoutingEventArgs> OnNavigating;
         public event EventHandler<RoutedEventArgs> OnNavigated;
 
-        private readonly IServiceLocator _ServiceLocator;
+        private readonly Lazy<IServiceLocator> _ServiceLocator;
         private readonly IRouterSolver _RouterSolver;
         private readonly Queue<RouteContext> _CurrentNavigations = new Queue<RouteContext>();
 
         private object _ViewModel;
 
-        public NavigationViewModel(IServiceLocator serviceLocator, IRouterSolver routerSolver) {
+        public NavigationViewModel(Lazy<IServiceLocator> serviceLocator, IRouterSolver routerSolver) {
             _ServiceLocator = serviceLocator;
             _RouterSolver = routerSolver;
             AfterResolveCommand = new RelaySimpleCommand<string>(AfterResolve);
             BeforeResolveCommand = RelayResultCommand.Create<string, BeforeRouterResult>(BeforeResolve);
         }
 
-        public static NavigationViewModel Create(IServiceLocator serviceLocator, IRouterSolver routerSolver) {
+        public static NavigationViewModel Create(Lazy<IServiceLocator> serviceLocator, IRouterSolver routerSolver) {
             return new NavigationViewModel(serviceLocator, routerSolver);
         }
 
@@ -82,7 +82,7 @@ namespace Neutronium.ReactiveTrader.Client.Application.Navigation
 
         private object GetViewModelFromRoute(string routeName) {
             var type = _RouterSolver.SolveType(routeName);
-            return _ServiceLocator.GetInstance(type);
+            return _ServiceLocator.Value.GetInstance(type);
         }
 
         private RouteContext CreateRouteContext(object viewModel, string routeName) {
@@ -120,14 +120,14 @@ namespace Neutronium.ReactiveTrader.Client.Application.Navigation
 
         public async Task Navigate<T>(NavigationContext<T> context = null) {
             var resolutionKey = context?.ResolutionKey;
-            var vm = (resolutionKey == null) ? _ServiceLocator.GetInstance<T>() : _ServiceLocator.GetInstance<T>(resolutionKey);
+            var vm = (resolutionKey == null) ? _ServiceLocator.Value.GetInstance<T>() : _ServiceLocator.Value.GetInstance<T>(resolutionKey);
             context?.BeforeNavigate(vm);
             await Navigate(vm, context?.RouteName);
         }
 
         public async Task Navigate(Type type, NavigationContext context = null) {
             var resolutionKey = context?.ResolutionKey;
-            var vm = (resolutionKey == null) ? _ServiceLocator.GetInstance(type) : _ServiceLocator.GetInstance(type, resolutionKey);
+            var vm = (resolutionKey == null) ? _ServiceLocator.Value.GetInstance(type) : _ServiceLocator.Value.GetInstance(type, resolutionKey);
             await Navigate(vm, context?.RouteName);
         }
 

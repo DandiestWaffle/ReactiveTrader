@@ -15,7 +15,7 @@ namespace Neutronium.ReactiveTrader.Client {
             typeof(RoutingConfiguration).GetTypesFromSameAssembly()
                 .InNamespace("Neutronium.ReactiveTrader.Client.ViewModel.Pages")
                 .Register(convention);
-            routeBuilder.Register<ShellViewModel>("main");
+            routeBuilder.Register<IShellViewModel>("main");
         }
     }
 }

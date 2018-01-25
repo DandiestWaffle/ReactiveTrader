@@ -32,7 +32,7 @@ namespace Neutronium.ReactiveTrader.Client
             _ServiceLocator = new Lazy<IServiceLocator>(() => new AutofacServiceLocator(_ContainerBuilder.Build()));
         }
 
-        public IServiceLocator GetServiceLocator() => _ServiceLocator.Value;
+        public Lazy<IServiceLocator> GetServiceLocator() => _ServiceLocator;
 
         public void Register<T>(T implementation) where T : class
         {
