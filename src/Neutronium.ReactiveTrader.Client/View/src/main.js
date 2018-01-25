@@ -11,8 +11,9 @@ install(Vue)
 var options = vueInstanceOption();
 const { router } = options;
 router.beforeEach((to, from, next) => {
-    const name = to.name;
+    const name = to.name || 'main';
     const vmFile = `../data/${name}/vm.cjson`
+    console.log(vmFile);
     import(`../data/${name}/vm.cjson`).then(module => {
         const newVm = createVM(module);
         router.app.ViewModel.CurrentViewModel = newVm.ViewModel.CurrentViewModel;
