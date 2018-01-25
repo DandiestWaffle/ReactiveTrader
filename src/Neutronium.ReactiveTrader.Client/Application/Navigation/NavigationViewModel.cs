@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 using Neutronium.MVVMComponents;
 using Neutronium.MVVMComponents.Relay;
 
-namespace Neutronium.ReactiveTrader.Client.Application.Navigation {
+namespace Neutronium.ReactiveTrader.Client.Application.Navigation
+{
     public class NavigationViewModel : Vm.Tools.ViewModel, INavigator {
         public IResultCommand<string, BeforeRouterResult> BeforeResolveCommand { get; }
         public ISimpleCommand<string> AfterResolveCommand { get; }

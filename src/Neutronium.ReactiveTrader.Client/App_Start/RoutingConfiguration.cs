@@ -1,4 +1,5 @@
-﻿using Neutronium.Core.Navigation.Routing;
+﻿using Adaptive.ReactiveTrader.Client.UI.Shell;
+using Neutronium.Core.Navigation.Routing;
 using Neutronium.ReactiveTrader.Client.Application.Navigation;
 
 namespace Neutronium.ReactiveTrader.Client {
@@ -14,6 +15,7 @@ namespace Neutronium.ReactiveTrader.Client {
             typeof(RoutingConfiguration).GetTypesFromSameAssembly()
                 .InNamespace("Neutronium.ReactiveTrader.Client.ViewModel.Pages")
                 .Register(convention);
+            routeBuilder.Register<ShellViewModel>("main");
         }
     }
 }

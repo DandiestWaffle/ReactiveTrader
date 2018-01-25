@@ -1,5 +1,8 @@
 ﻿using System.Windows;
-using Microsoft.Practices.ServiceLocation;
+using Adaptive.ReactiveTrader.Client.Configuration;
+using Adaptive.ReactiveTrader.Client.Domain;
+using Adaptive.ReactiveTrader.Shared.Logging;
+using CommonServiceLocator;
 using Neutronium.ReactiveTrader.Client.Application.LifeCycleHook;
 using Neutronium.ReactiveTrader.Client.Application.Navigation;
 using Neutronium.ReactiveTrader.Client.Application.WindowServices;
@@ -16,10 +19,10 @@ namespace Neutronium.ReactiveTrader.Client {
             var routeSolver = RoutingConfiguration.Register();
             var serviceLocatorBuilder = new DependencyInjectionConfiguration();
             var serviceLocator = serviceLocatorBuilder.GetServiceLocator();
+            serviceLocatorBuilder.Register<IWindowViewModel>(window);
 
             var navigation = NavigationViewModel.Create(serviceLocator, routeSolver);
 
-            serviceLocatorBuilder.Register<IWindowViewModel>(window);
             serviceLocatorBuilder.Register<INavigator>(navigation);
             serviceLocatorBuilder.Register(navigation);
 
@@ -28,6 +31,10 @@ namespace Neutronium.ReactiveTrader.Client {
             serviceLocatorBuilder.Register<INotificationSender>(ApplicationViewModel);
 
             _LifeCycleEventsRegistror = RegisterLifeCycleEvents(serviceLocator);
+
+            var reactiveTraderApi = serviceLocator.GetInstance<IReactiveTrader>();
+            var username = serviceLocator.GetInstance<IUserProvider>().Username;
+            reactiveTraderApi.Initialize(username, serviceLocator.GetInstance<IConfigurationProvider>().Servers, serviceLocator.GetInstance<ILoggerFactory>());
         }
 
         private static LifeCycleEventsRegistror RegisterLifeCycleEvents(IServiceLocator serviceLocator) {
