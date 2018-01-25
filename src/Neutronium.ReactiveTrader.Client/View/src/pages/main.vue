@@ -5,8 +5,8 @@
 
         <v-layout>
           <v-flex xs12 sm6 offset-sm3>
-            <v-card>
-            </v-card>
+              <spot-tiles :spotTiles="viewModel.SpotTiles.SpotTiles">
+              </spot-tiles>
           </v-flex>
         </v-layout>
 
@@ -18,6 +18,7 @@
 <script>
 import textButton from '../components/textButton'
 import iconButton from '../components/IconButton'
+import spotTiles  from '../components/spotTiles'
 
 const props={
   viewModel: Object,
@@ -26,7 +27,8 @@ const props={
 export default {
   components:{
     textButton,
-    iconButton
+    iconButton,
+    spotTiles
   },
   methods:{
     enter(){
