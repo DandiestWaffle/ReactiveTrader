@@ -2,7 +2,7 @@
 
 namespace Neutronium.ReactiveTrader.Client.ViewModel {
     public class ApplicationInformation {
-        public string Name => "Neutronium Vuetify SPA";
+        public string Name => "ReactiveTrader Neutronium";
 
         public string Version => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 

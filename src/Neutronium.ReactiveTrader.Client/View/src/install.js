@@ -24,6 +24,7 @@ import {
     VCard,
     VDialog,
     VTextField,
+    VProgressCircular,
     transitions
 } from 'vuetify'
 
@@ -44,6 +45,7 @@ function install(Vue) {
             VCard,
             VDialog,
             VTextField,
+            VProgressCircular,
             transitions
         }
     })

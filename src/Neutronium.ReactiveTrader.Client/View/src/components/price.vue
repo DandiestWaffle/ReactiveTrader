@@ -1,9 +1,11 @@
 <template>
     <div class="price">
-        {{price.Direction.displayName}}
+        <flat-button color="primary" :text="price.Direction.displayName" :command="price.ExecuteCommand"></flat-button>
     </div>
 </template>
 <script>
+import flatButton from "./flatButton";
+
 const props = {
   price: {
     required: true,
@@ -11,8 +13,12 @@ const props = {
   }
 };
 export default {
+  components: {
+    flatButton
+  },
   props
-}
+};
 </script>
 <style scoped>
+
 </style>
