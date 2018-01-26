@@ -3,12 +3,12 @@
       <v-content>
         <v-container fluid class="main-container">
 
-        <v-layout>
-          <v-flex xs12 sm6 offset-sm3>
-              <spot-tiles :spotTiles="viewModel.SpotTiles.SpotTiles">
-              </spot-tiles>
-          </v-flex>
-        </v-layout>
+          <v-layout>
+            <v-flex md10 offset-md1>
+                <spot-tiles :spotTiles="viewModel.SpotTiles.SpotTiles">
+                </spot-tiles>
+            </v-flex>
+          </v-layout>
 
         </v-container>
       </v-content>

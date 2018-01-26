@@ -1,12 +1,18 @@
 <template>
-    <div class="price">
+  <v-container grid-list-md text-xs-center class="price">
+      <v-layout row wrap>
+        <v-flex xs12>
+          <flat-button color="primary" :text="price.Direction.displayName" :command="price.ExecuteCommand"></flat-button>
+        </v-flex>
+      <v-flex xs12>
         <span>
-            <span>{{price.BigFigures}}</span>
-            <em class="price">{{price.Pips}}</em>
-            <span>{{price.TenthOfPip}}</span>
+          <span>{{price.BigFigures}}</span>
+          <em class="price">{{price.Pips}}</em>
+          <span>{{price.TenthOfPip}}</span>
         </span>
-        <flat-button color="primary" :text="price.Direction.displayName" :command="price.ExecuteCommand"></flat-button>
-    </div>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 <script>
 import flatButton from "./flatButton";
@@ -26,6 +32,6 @@ export default {
 </script>
 <style scoped>
 .price em{
-  font-size:3em;
+  font-size:1.5em;
 }
 </style>

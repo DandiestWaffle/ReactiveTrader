@@ -1,8 +1,12 @@
 <template>
-    <div>
-        <spot-tile v-for="(spot,index) in spotTiles" :spotTile="spot" :key="index">
-        </spot-tile>
-    </div>
+    <v-container grid-list-md md12  offset-md3>
+      <v-layout row wrap md12>
+        <v-flex xl2 lg3 md4 sm6 xm12 v-for="(spot,index) in spotTiles" :key="index">
+          <spot-tile  :spotTile="spot" >
+          </spot-tile>
+        </v-flex>
+      </v-layout>
+  </v-container>
 </template>
 <script>
 import spotTile from "./spotTile";

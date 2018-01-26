@@ -27,6 +27,7 @@ export default {
 </script>
 <style scoped>
 .spot {
-  min-height: 50px;
+  min-height: 200px;
+  height: 100%;
 }
 </style>

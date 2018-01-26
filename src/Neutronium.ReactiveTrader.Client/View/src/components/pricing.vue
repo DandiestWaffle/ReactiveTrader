@@ -1,5 +1,5 @@
 <template>
-  <v-card :class="{error: isError}">
+  <v-card :class="{error: isError}" class="pricing-card">
     <v-card-title primary class="title title-pricing">
       {{pricing.Symbol}}
       <v-spacer></v-spacer>
@@ -10,7 +10,6 @@
         <h4 class="orange--text">Pricing currently unavailable</h4>
       </v-layout>
       <div v-else>
-        {{pricing.Notional}} {{pricing.DealtCurrency}} - {{pricing.SpotDate}}
         <v-layout row wrap>
           <v-flex md5>
             <price :price="pricing.Bid"></price>
@@ -28,6 +27,19 @@
             <price :price="pricing.Ask"></price>
           </v-flex>
         </v-layout>
+        <v-container grid-list-md text-xs-center>
+          <v-layout row wrap>
+            <v-flex class="text-md-left" md2>
+               {{pricing.DealtCurrency}}
+            </v-flex>
+            <v-flex class="text-md-left" md5>
+                <input class="notional" type="text" v-model="pricing.Notional"></input>
+            </v-flex>
+            <v-flex class="text-md-right" md5>
+              {{pricing.SpotDate}}
+            </v-flex>
+          </v-layout>
+        </v-container>
       </div>
     </v-card-text>
   </v-card>
@@ -63,6 +75,12 @@ export default {
 };
 </script>
 <style scoped>
+input.notional{
+  outline: 0px;
+}
+input:focus.notional{
+  color:rgb(56, 142, 60);
+}
 .title-pricing {
   height: 45px;
 }
@@ -71,5 +89,8 @@ export default {
 }
 .for-icon{
   height: 20px;
+}
+:hover.pricing-card{
+  background: black;
 }
 </style>
