@@ -1,9 +1,16 @@
 <template>
-    <v-card class="spot">
-        {{spotTile.CurrencyPair}}
-    </v-card>
+  <v-card class="spot">
+    <pricing v-if="spotTile.Pricing" :pricing="spotTile.Pricing">
+    </pricing>
+    <configuration v-else-if="spotTile.Config" :configuration="spotTile.Config">
+    </configuration>
+
+  </v-card>
 </template>
 <script>
+import pricing from "./pricing";
+import configuration from "./configuration";
+
 const props = {
   spotTile: {
     required: true,
@@ -11,11 +18,15 @@ const props = {
   }
 };
 export default {
+  components: {
+    pricing,
+    configuration
+  },
   props
-}
+};
 </script>
 <style scoped>
-.spot{
-    min-height: 50px;
+.spot {
+  min-height: 50px;
 }
 </style>
