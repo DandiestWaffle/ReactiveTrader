@@ -11,14 +11,18 @@
       </v-layout>
       <div v-else>
         {{pricing.Notional}} {{pricing.DealtCurrency}} - {{pricing.SpotDate}}
-        <v-layout row wrap>    
+        <v-layout row wrap>
           <v-flex md5>
             <price :price="pricing.Bid"></price>
           </v-flex>
-          <v-flex md2>
-            <v-icon large color="green darken-2"  v-show="isUp">fa-chevron-up</v-icon>
-            {{pricing.Spread}}
-            <v-icon large color="red darken-2"  v-show="isDown">fa-chevron-down</v-icon>
+          <v-flex md2 class="text-xs-center">
+            <div class="for-icon">
+              <v-icon large color="green darken-2" v-show="isUp">fa-chevron-up</v-icon>
+            </div>
+            <p>{{pricing.Spread}}</p>
+            <div class="for-icon">
+              <v-icon large color="red darken-2" v-show="isDown">fa-chevron-down</v-icon>
+            </div>
           </v-flex>
           <v-flex md5>
             <price :price="pricing.Ask"></price>
@@ -64,5 +68,8 @@ export default {
 }
 .error {
   background: red;
+}
+.for-icon{
+  height: 20px;
 }
 </style>
