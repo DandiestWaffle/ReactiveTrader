@@ -1,11 +1,11 @@
 <template>
-    <v-btn small icon @click.stop="execute">
+    <v-btn small icon @click="execute">
         <v-icon>{{icon}}</v-icon>
     </v-btn>
 </template>
 
 <script>
-import mixin from 'neutronium-vue-simple-command-mixin'
+import mixin from 'neutronium-vue-command-mixin'
 
 const props = {
     icon:{

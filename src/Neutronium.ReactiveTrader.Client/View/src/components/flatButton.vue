@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import mixin from 'neutronium-vue-simple-command-mixin'
+import mixin from 'neutronium-vue-command-mixin'
 
 const props = {
     text:{

@@ -1,10 +1,6 @@
 <template>
   <v-container grid-list-md text-xs-center class="price">
-      <v-layout row wrap>
-        <v-flex xs12>
-          <flat-button color="primary" :text="price.Direction.displayName" :command="price.ExecuteCommand"></flat-button>
-        </v-flex>
-      <v-flex xs12>
+        <flat-button color="primary" :text="price.Direction.displayName" :command="price.ExecuteCommand"></flat-button>
         <span>
           <span>{{price.BigFigures}}</span>
           <em class="price">{{price.Pips}}</em>
@@ -32,6 +28,6 @@ export default {
 </script>
 <style scoped>
 .price em{
-  font-size:1.5em;
+  font-size:2.2em;
 }
 </style>

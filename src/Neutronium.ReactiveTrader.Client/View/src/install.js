@@ -25,7 +25,9 @@ import {
     VDialog,
     VTextField,
     VProgressCircular,
-    transitions
+    transitions,
+    VBtnToggle,
+    VTooltip
 } from 'vuetify'
 
 function install(Vue) {
@@ -46,7 +48,9 @@ function install(Vue) {
             VDialog,
             VTextField,
             VProgressCircular,
-            transitions
+            transitions,
+            VBtnToggle,
+            VTooltip
         }
     })
 
@@ -61,7 +65,6 @@ function vueInstanceOption(vm) {
         messages // set locale messages
     });
 
-    //Return vue global option here, such as vue-router, vue-i18n, mix-ins, .... 
     return {
         router,
         i18n

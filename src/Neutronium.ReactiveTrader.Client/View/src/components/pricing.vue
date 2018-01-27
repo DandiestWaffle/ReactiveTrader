@@ -5,7 +5,7 @@
       <v-spacer></v-spacer>
       <v-progress-circular v-show="isExecuting" indeterminate :size="30" :width="7" color="purple"></v-progress-circular>
     </v-card-title>
-    <v-card-text>
+    <v-card-text class="card-pricing">
       <v-layout row wrap v-if="isError">
         <h4 class="orange--text">Pricing currently unavailable</h4>
       </v-layout>
@@ -14,14 +14,18 @@
           <v-flex md5>
             <price :price="pricing.Bid"></price>
           </v-flex>
-          <v-flex md2 class="text-xs-center">
-            <div class="for-icon">
-              <v-icon large color="green darken-2" v-show="isUp">fa-chevron-up</v-icon>
-            </div>
-            <p>{{pricing.Spread}}</p>
-            <div class="for-icon">
-              <v-icon large color="red darken-2" v-show="isDown">fa-chevron-down</v-icon>
-            </div>
+          <v-flex md2 class="text-center up-down">
+            <v-layout column justify-space-between>
+              <v-flex class="item">
+                <v-icon large color="green darken-2" v-show="isUp">fa-chevron-up</v-icon>
+              </v-flex>
+              <v-flex class="item">
+                <p>{{pricing.Spread}}</p>
+              </v-flex>
+              <v-flex class="item">
+                <v-icon large color="red darken-2" v-show="isDown">fa-chevron-down</v-icon>
+              </v-flex>
+            </v-layout>
           </v-flex>
           <v-flex md5>
             <price :price="pricing.Ask"></price>
@@ -30,10 +34,10 @@
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
             <v-flex class="text-md-left" md2>
-               {{pricing.DealtCurrency}}
+              {{pricing.DealtCurrency}}
             </v-flex>
             <v-flex class="text-md-left" md5>
-                <input class="notional" type="text" v-model="pricing.Notional"></input>
+              <input class="notional" type="text" v-model="pricing.Notional"></input>
             </v-flex>
             <v-flex class="text-md-right" md5>
               {{pricing.SpotDate}}
@@ -74,12 +78,15 @@ export default {
   props
 };
 </script>
-<style scoped>
-input.notional{
+<style>
+.card-pricing {
+  padding-top: 0px;
+}
+input.notional {
   outline: 0px;
 }
-input:focus.notional{
-  color:rgb(56, 142, 60);
+input:focus.notional {
+  color: rgb(56, 142, 60);
 }
 .title-pricing {
   height: 45px;
@@ -87,10 +94,17 @@ input:focus.notional{
 .error {
   background: red;
 }
-.for-icon{
+.for-icon {
   height: 20px;
 }
-:hover.pricing-card{
+:hover.pricing-card {
   background: black;
+}
+.up-down {
+  height: 100%;
+  text-align: center;
+}
+.item {
+  height: 40px;
 }
 </style>

@@ -4,7 +4,7 @@
         <v-container fluid class="main-container">
 
           <v-layout>
-            <v-flex md10 offset-md1>
+            <v-flex>
                 <spot-tiles :spotTiles="viewModel.SpotTiles.SpotTiles">
                 </spot-tiles>
             </v-flex>
@@ -17,7 +17,7 @@
 
 <script>
 import textButton from '../components/textButton'
-import iconButton from '../components/IconButton'
+import iconButton from '../components/iconButton'
 import spotTiles  from '../components/spotTiles'
 
 const props={

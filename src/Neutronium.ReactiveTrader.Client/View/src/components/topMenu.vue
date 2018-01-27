@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import iconButton from './IconButton'
+import iconButton from './iconButton'
 
 const props = {
     value:{

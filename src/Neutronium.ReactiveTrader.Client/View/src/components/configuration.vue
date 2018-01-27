@@ -1,29 +1,25 @@
 <template>
   <v-layout row wrap class="configuration-main">
     <v-flex md12 class="spot">
-      <v-card >
-        <v-card-title class="title orange--text">Price Rendering</v-card-title>
-        <v-card-actions>
-          <flat-button text="Standard" :command="configuration.StandardCommand"></flat-button>
-          <flat-button text="Drop Frame" :command="configuration.DropFrameCommand"></flat-button>
-          <flat-button text="Conflate" :command="configuration.ConflateCommand"></flat-button>
-          <flat-button text="ConstantRate" :command="configuration.ConstantRateCommand"></flat-button>
-        </v-card-actions>
-      </v-card>
+      <basic-configuration title="Price Rendering" :commands="renderingCommands">
+      </basic-configuration>
     </v-flex>
-    <v-flex md12  class="spot">
-      <v-card>
-        <v-card-title red class="title orange--text">Trade Execution</v-card-title>
-        <v-card-actions>
-          <flat-button text="Asynchronous" :command="configuration.AsyncCommand"></flat-button>
-          <flat-button text="Synchronous" :command="configuration.SyncCommand"></flat-button>
-        </v-card-actions>
-      </v-card>
+    <v-flex md12 class="spot">
+      <basic-configuration title="Trade Execution" :commands="tradeExecutionCommands">
+      </basic-configuration>
     </v-flex>
   </v-layout>
 </template>
 <script>
+import basicConfiguration from "./basicConfiguration";
 import flatButton from "./flatButton";
+import iconButton from "./iconButton";
+
+function execute(cmd) {
+  if (cmd.CanExecuteValue) {
+    cmd.Execute();
+  }
+}
 
 const props = {
   configuration: {
@@ -33,7 +29,39 @@ const props = {
 };
 export default {
   components: {
-    flatButton
+    flatButton,
+    iconButton,
+    basicConfiguration
+  },
+  watch: {
+    rendering(newValue) {
+      console.log(newValue);
+      const cmd = this.renderingCommands[newValue];
+      execute(cmd);
+    }
+  },
+  data() {
+    return {
+      rendering: 0
+    };
+  },
+  computed: {
+    renderingCommands() {
+      const configuration = this.configuration;
+      return [
+        { command: configuration.StandardCommand, icon: "library_books", comment: 'Standard' },
+        { command: configuration.DropFrameCommand, icon: "whatshot", comment: 'Drop Flame' },
+        { command: configuration.ConflateCommand, icon: "call_merge", comment: 'Conflate' },
+        { command: configuration.ConstantRateCommand, icon: "trending_flat", comment: 'ConstantRate' }
+      ];
+    },
+    tradeExecutionCommands() {
+      const configuration = this.configuration;
+      return [
+        { command: configuration.AsyncCommand, icon: "sync", comment: 'Asynchroneous' },
+        { command: configuration.SyncCommand, icon: "arrow_forward", comment: 'Synchroneous' },
+      ];
+    }
   },
   props
 };
@@ -42,7 +70,7 @@ export default {
 .spot {
   height: 50%;
 }
-.configuration-main .btn{
+.configuration-main .btn {
   font-size: 10px;
 }
 </style>
