@@ -7,6 +7,7 @@ import { router } from './route'
 import VueI18n from 'vue-i18n'
 import messages from './message'
 import Notifications from 'vue-notification'
+import * as vueMoment from 'vue-moment'
 
 import {
     Vuetify,
@@ -57,6 +58,7 @@ function install(Vue) {
     Vue.use(Vue_Router)
     Vue.use(VueI18n)
     Vue.use(Notifications)
+    Vue.use(vueMoment)
 }
 
 function vueInstanceOption(vm) {

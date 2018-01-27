@@ -241,9 +241,16 @@
     <None Include="View\package-lock.json" />
     <None Include="View\src\components\applicationFooter.vue" />
     <None Include="View\src\components\applicationNotification.vue" />
+    <None Include="View\src\components\basicConfiguration.vue" />
+    <None Include="View\src\components\configuration.vue" />
+    <None Include="View\src\components\flatButton.vue" />
     <None Include="View\src\components\iconButton.vue" />
     <None Include="View\src\components\modal.vue" />
+    <None Include="View\src\components\price.vue" />
+    <None Include="View\src\components\pricing.vue" />
     <None Include="View\src\components\sideMenu.vue" />
+    <None Include="View\src\components\spotTile.vue" />
+    <None Include="View\src\components\spotTiles.vue" />
     <None Include="View\src\components\textButton.vue" />
     <None Include="View\src\components\topMenu.vue" />
     <None Include="View\src\message.json">

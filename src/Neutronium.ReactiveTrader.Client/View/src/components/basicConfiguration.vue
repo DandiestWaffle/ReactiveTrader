@@ -2,7 +2,6 @@
   <v-card>
     <v-card-title class="title orange--text">{{title}}</v-card-title>
     <v-card-text class="card-configuration">
-
       <v-btn-toggle mandatory v-model="choosen">
         <v-tooltip bottom v-for="(cmd, index) in commands" :key="index">
           <v-btn flat slot="activator" @click.native="choosen=index">

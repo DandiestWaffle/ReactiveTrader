@@ -1,5 +1,5 @@
 <template>
-  <v-card :class="{error: isError}" class="pricing-card">
+  <v-card :class="{error: isError}" class="pricing-card" :height="height">
     <v-card-title primary class="title title-pricing">
       {{pricing.Symbol}}
       <v-spacer></v-spacer>
@@ -55,6 +55,10 @@ const props = {
   pricing: {
     required: true,
     type: Object
+  },
+  height:{
+    required:false,
+    default:"auto"
   }
 };
 export default {

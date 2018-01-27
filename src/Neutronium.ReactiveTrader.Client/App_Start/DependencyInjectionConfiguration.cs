@@ -47,7 +47,6 @@ namespace Neutronium.ReactiveTrader.Client
             builder.RegisterInstance(application).As<IApplication>();
             builder.RegisterInstance(new WPFUIDispatcher(window.Dispatcher)).As<IDispatcher>();
             builder.RegisterType<ApplicationLifeCycle>().As<IApplicationLifeCycle>();
-            //kernel.Bind<MainViewModel>().ToSelf().InSingletonScope();
 
             builder.RegisterType<Adaptive.ReactiveTrader.Client.Domain.ReactiveTrader>().As<IReactiveTrader>().SingleInstance();
             builder.RegisterType<DebugLoggerFactory>().As<ILoggerFactory>().SingleInstance();

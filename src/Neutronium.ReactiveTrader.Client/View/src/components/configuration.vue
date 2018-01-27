@@ -1,11 +1,11 @@
 <template>
-  <v-layout row wrap class="configuration-main">
-    <v-flex md12 class="spot">
-      <basic-configuration title="Price Rendering" :commands="renderingCommands">
+  <v-layout md12 column justify-space-between class="configuration-main" :style="{'height':height}">
+    <v-flex md12 class="container up">
+      <basic-configuration class="item" title="Price Rendering" :commands="renderingCommands">
       </basic-configuration>
     </v-flex>
-    <v-flex md12 class="spot">
-      <basic-configuration title="Trade Execution" :commands="tradeExecutionCommands">
+    <v-flex md12 class="container down">
+      <basic-configuration class="item" title="Trade Execution" :commands="tradeExecutionCommands">
       </basic-configuration>
     </v-flex>
   </v-layout>
@@ -25,6 +25,10 @@ const props = {
   configuration: {
     required: true,
     type: Object
+  },
+  height: {
+    required: false,
+    default: "auto"
   }
 };
 export default {
@@ -49,17 +53,41 @@ export default {
     renderingCommands() {
       const configuration = this.configuration;
       return [
-        { command: configuration.StandardCommand, icon: "library_books", comment: 'Standard' },
-        { command: configuration.DropFrameCommand, icon: "whatshot", comment: 'Drop Flame' },
-        { command: configuration.ConflateCommand, icon: "call_merge", comment: 'Conflate' },
-        { command: configuration.ConstantRateCommand, icon: "trending_flat", comment: 'ConstantRate' }
+        {
+          command: configuration.StandardCommand,
+          icon: "library_books",
+          comment: "Standard"
+        },
+        {
+          command: configuration.DropFrameCommand,
+          icon: "whatshot",
+          comment: "Drop Flame"
+        },
+        {
+          command: configuration.ConflateCommand,
+          icon: "call_merge",
+          comment: "Conflate"
+        },
+        {
+          command: configuration.ConstantRateCommand,
+          icon: "trending_flat",
+          comment: "ConstantRate"
+        }
       ];
     },
     tradeExecutionCommands() {
       const configuration = this.configuration;
       return [
-        { command: configuration.AsyncCommand, icon: "sync", comment: 'Asynchroneous' },
-        { command: configuration.SyncCommand, icon: "arrow_forward", comment: 'Synchroneous' },
+        {
+          command: configuration.AsyncCommand,
+          icon: "sync",
+          comment: "Asynchroneous"
+        },
+        {
+          command: configuration.SyncCommand,
+          icon: "arrow_forward",
+          comment: "Synchroneous"
+        }
       ];
     }
   },
@@ -67,10 +95,21 @@ export default {
 };
 </script>
 <style scoped>
-.spot {
-  height: 50%;
+.configuration-main{
+  margin: 0px !important;
 }
-.configuration-main .btn {
-  font-size: 10px;
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0px !important;
+}
+.container.up {
+  justify-content: flex-start;
+}
+.container.down {
+  justify-content: flex-end;
+}
+.container.down>.item{
+  padding-bottom: 0px;
 }
 </style>
