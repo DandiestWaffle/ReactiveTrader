@@ -43,7 +43,7 @@ export default {
 
 <style>
 main {
-  height: 100%;
+  height: calc(100% - 50px);
 }
 
 .main-container {

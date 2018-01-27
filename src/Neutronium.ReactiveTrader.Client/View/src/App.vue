@@ -17,7 +17,7 @@
       <router-view :viewModel="viewModel.CurrentViewModel"></router-view>
     </transition>
 
-    <application-footer :year="viewModel.ApplicationInformation.Year">
+    <application-footer :year="viewModel.ApplicationInformation.Year" :connectivity="viewModel.CurrentViewModel.ConnectivityStatus">
     </application-footer>
 
   </v-app>

@@ -9,12 +9,15 @@ using Neutronium.ReactiveTrader.Client.Application.WindowServices;
 using Neutronium.ReactiveTrader.Client.ViewModel;
 using Neutronium.WPF.ViewModel;
 
-namespace Neutronium.ReactiveTrader.Client {
-    public class ApplicationViewModelBuilder {
+namespace Neutronium.ReactiveTrader.Client
+{
+    public class ApplicationViewModelBuilder
+    {
         public ApplicationViewModel ApplicationViewModel { get; }
         private readonly LifeCycleEventsRegistror _LifeCycleEventsRegistror;
 
-        public ApplicationViewModelBuilder(Window wpfWindow) {
+        public ApplicationViewModelBuilder(Window wpfWindow)
+        {
             var window = new WindowViewModel(wpfWindow);
             var routeSolver = RoutingConfiguration.Register();
             var serviceLocatorBuilder = new DependencyInjectionConfiguration();
@@ -38,7 +41,8 @@ namespace Neutronium.ReactiveTrader.Client {
             reactiveTraderApi.Initialize(username, serviceLocator.GetInstance<IConfigurationProvider>().Servers, serviceLocator.GetInstance<ILoggerFactory>());
         }
 
-        private static LifeCycleEventsRegistror RegisterLifeCycleEvents(IServiceLocator serviceLocator) {
+        private static LifeCycleEventsRegistror RegisterLifeCycleEvents(IServiceLocator serviceLocator)
+        {
             var registor = serviceLocator.GetInstance<LifeCycleEventsRegistror>();
             return registor.Register();
         }

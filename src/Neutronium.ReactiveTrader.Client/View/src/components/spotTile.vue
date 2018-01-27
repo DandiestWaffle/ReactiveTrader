@@ -1,6 +1,8 @@
 <template>
   <div class="spot">
-    <affirmation class="item" v-if="spotTile.Affirmation" :affirmation="spotTile.Affirmation" :height="height">
+    <error class="item" v-if="spotTile.Error" :error="spotTile.Error" :height="height">
+    </error>
+    <affirmation class="item" v-else-if="spotTile.Affirmation" :affirmation="spotTile.Affirmation" :height="height">
     </affirmation>
     <pricing class="item" v-else-if="spotTile.Pricing" :pricing="spotTile.Pricing" :height="height">
     </pricing>
@@ -9,6 +11,7 @@
   </div>
 </template>
 <script>
+import error from "./error";
 import affirmation from "./affirmation";
 import pricing from "./pricing";
 import configuration from "./configuration";
@@ -27,7 +30,8 @@ export default {
   components: {
     pricing,
     configuration,
-    affirmation
+    affirmation,
+    error
   },
   props
 };

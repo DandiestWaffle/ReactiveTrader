@@ -53,7 +53,7 @@ namespace Neutronium.ReactiveTrader.Client
             builder.RegisterType<NullProcessorMonitor>().As<IProcessorMonitor>().SingleInstance();
             builder.RegisterType<ConstantRatePump>().As<IConstantRatePump>();
 
-            builder.RegisterType<ShellViewModel>().As<IShellViewModel>().ExternallyOwned();
+            builder.RegisterType<ShellViewModel>().As<IShellViewModel>().ExternallyOwned().SingleInstance();
             builder.RegisterType<SpotTilesViewModel>().As<ISpotTilesViewModel>().ExternallyOwned();
             builder.RegisterType<SpotTileViewModel>().As<ISpotTileViewModel>().ExternallyOwned();
             builder.RegisterType<SpotTileErrorViewModel>().As<ISpotTileErrorViewModel>().ExternallyOwned();
