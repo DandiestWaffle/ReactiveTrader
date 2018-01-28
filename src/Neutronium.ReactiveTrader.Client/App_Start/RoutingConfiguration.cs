@@ -16,6 +16,7 @@ namespace Neutronium.ReactiveTrader.Client {
                 .InNamespace("Neutronium.ReactiveTrader.Client.ViewModel.Pages")
                 .Register(convention);
             routeBuilder.Register<IShellViewModel>("main");
+            routeBuilder.Register<IShellViewModel>("blot");
         }
     }
 }

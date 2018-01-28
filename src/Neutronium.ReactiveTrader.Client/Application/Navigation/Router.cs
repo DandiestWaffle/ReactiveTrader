@@ -8,7 +8,8 @@ namespace Neutronium.ReactiveTrader.Client.Application.Navigation {
         private readonly Dictionary<Type, string> _TypeToRoute = new Dictionary<Type, string>();
 
         public IRouterBuilder Register(Type type, string routerName, bool defaultType = true) {
-            _TypeToRoute.Add(type, routerName);
+            if (!_TypeToRoute.ContainsKey(type))
+                _TypeToRoute.Add(type, routerName);
 
             if (!defaultType && _RouteToType.ContainsKey(routerName))
                 return this;

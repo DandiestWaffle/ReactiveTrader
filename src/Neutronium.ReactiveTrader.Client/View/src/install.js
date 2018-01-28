@@ -28,7 +28,8 @@ import {
     VProgressCircular,
     transitions,
     VBtnToggle,
-    VTooltip
+    VTooltip,
+    VDataTable
 } from 'vuetify'
 
 function install(Vue) {
@@ -51,7 +52,8 @@ function install(Vue) {
             VProgressCircular,
             transitions,
             VBtnToggle,
-            VTooltip
+            VTooltip,
+            VDataTable
         }
     })
 

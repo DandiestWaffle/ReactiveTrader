@@ -2,7 +2,7 @@
 
 namespace Neutronium.ReactiveTrader.Client.ViewModel {
     public class ApplicationInformation {
-        public string Name => "ReactiveTrader Neutronium UI";
+        public string Name => "Reactive Trader Neutronium";
 
         public string Version => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
