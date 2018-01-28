@@ -35,7 +35,7 @@ Reactive Trader comes in different flavours (click on the link for a demo)
 
 ## Neutronium
 
-[![image](./images//neutronium.png)](https://reactivetrader.blob.core.windows.net/client/Adaptive.ReactiveTrader.application)
+<img src="./images//neutronium.png" width="500px">
   
 ## Windows Store App
 
