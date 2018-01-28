@@ -31,7 +31,7 @@
             <price :price="pricing.Ask"></price>
           </v-flex>
         </v-layout>
-        <v-container grid-list-md text-xs-center>
+        <v-container grid-list-md text-xs-center class="container-end">
           <v-layout row wrap>
             <v-flex class="text-md-left" md2>
               {{pricing.DealtCurrency}}
@@ -84,7 +84,7 @@ export default {
 </script>
 <style>
 .card-pricing {
-  padding-top: 0px;
+  padding-top: 0px !important;
 }
 input.notional {
   outline: 0px;
@@ -110,5 +110,8 @@ input:focus.notional {
 }
 .item {
   height: 40px;
+}
+.container-end{
+  padding: 0px !important;
 }
 </style>

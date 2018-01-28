@@ -47,5 +47,9 @@ export default {
 <style scoped>
 .card-configuration {
   padding-top: 0px;
+  padding-bottom: 12px;
+}
+.title{
+    padding-bottom: 10px;
 }
 </style>

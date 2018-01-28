@@ -93,6 +93,9 @@ export default {
     text-decoration: line-through;
     color: black !important;
 }
+.raw0{
+    color: darkgray;
+}
 .raw1{
     background: #4d4d4d;
 }

@@ -36,5 +36,8 @@ export default {
 span {
   color: grey;
 }
+p{
+    margin:0px;
+}
 </style>
 

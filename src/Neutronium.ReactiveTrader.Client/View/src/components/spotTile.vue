@@ -23,7 +23,7 @@ const props = {
   },
   height: {
     required: false,
-    default: "220px"
+    default: "200px"
   }
 };
 export default {
