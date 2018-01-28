@@ -6,7 +6,7 @@ namespace Adaptive.ReactiveTrader.Client.Configuration
     {
         public string Username
         {
-            get { return "WPF-" + new Random().Next(1000); }
+            get { return "NEUT-" + new Random().Next(1000); }
         }
     }
 }

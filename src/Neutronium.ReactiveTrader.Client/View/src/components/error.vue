@@ -36,7 +36,11 @@ export default {
 .card-error {
   padding-top: 0px;
 }
+.error-title {
+  padding-bottom: 2px;
+  padding-top: 6px;
+}
 .pricing-error > .error-title {
-  font-size: 18px;
+  font-size: 19px;
 }
 </style>
