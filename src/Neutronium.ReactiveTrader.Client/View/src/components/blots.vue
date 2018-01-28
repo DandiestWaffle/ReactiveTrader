@@ -1,20 +1,17 @@
 <template>
     <v-data-table item-key="TradeId" :headers="headers" :items="blots" hide-actions class="elevation-1">
         <template slot="items" slot-scope="props">
-            <td>{{ props.item.TradeDate | moment("MMMM Do YYYY HH:mm:ss")}}</td>
-            <td class="text-xs-center">{{ props.item.Direction.displayName }}</td>
-            <td class="text-xs-center">{{ props.item.CurrencyPair }}</td>
-            <td class="text-xs-center">{{ props.item.Notional }}</td>
-            <td class="text-xs-center">{{ props.item.SpotRate }}</td>
-            <td class="text-xs-center">{{ props.item.TradeStatus }}</td>
-            <td class="text-xs-center">{{ props.item.ValueDate | moment("DD MMM YY")}}</td>
-            <td class="text-xs-center">{{ props.item.TraderName }}</td>
-            <td class="text-xs-center">{{ props.item.TradeId }}</td>
-        </template>
-        <template slot="no-data">
-            <v-alert :value="true" color="warning" icon="warning">
-                No data.
-            </v-alert>
+            <tr :class="[{rejected:props.item.TradeStatus==='REJECTED'}, 'raw'+(props.index%2)]">
+                <td>{{ props.item.TradeDate | moment("MMMM Do YYYY HH:mm:ss")}}</td>
+                <td class="text-xs-center">{{ props.item.Direction.displayName }}</td>
+                <td class="text-xs-center">{{ props.item.CurrencyPair }}</td>
+                <td class="text-xs-center">{{ props.item.Notional }}</td>
+                <td class="text-xs-center">{{ props.item.SpotRate }}</td>
+                <td class="text-xs-center">{{ props.item.TradeStatus }}</td>
+                <td class="text-xs-center">{{ props.item.ValueDate | moment("DD MMM YY")}}</td>
+                <td class="text-xs-center">{{ props.item.TraderName }}</td>
+                <td class="text-xs-center">{{ props.item.TradeId }}</td>
+            </tr>
         </template>
     </v-data-table>
 
@@ -92,5 +89,11 @@ export default {
 };
 </script>
 <style>
-
+.rejected{
+    text-decoration: line-through;
+    color: black !important;
+}
+.raw1{
+    background: #4d4d4d;
+}
 </style>

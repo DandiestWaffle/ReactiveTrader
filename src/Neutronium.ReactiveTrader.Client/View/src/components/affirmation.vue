@@ -2,7 +2,8 @@
   <v-card class="pricing-card" :height="height">
     <v-card-title primary class="title title-pricing">
       <span>{{affirmation.CurrencyPair}}</span>
-      <span class="text-xs-right">{{affirmation.Rejected}}</span>
+      <v-spacer></v-spacer>
+      <span class="red--text text-xs-right">{{affirmation.Rejected}}</span>
     </v-card-title>
     <v-card-text class="card-affirmation">
       <p>Sold <em>{{affirmation.DealtCurrency}} {{affirmation.Notional}}</em></p>
